@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Durga Puja Greeting</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(to right, #FFD700, #FF69B4, #FF4500);
+    color: #fff;
+  }
+  h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px #000;
+  }
+  input, button {
+    padding: 14px 20px;
+    margin: 10px 0;
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    width: 80%;
+    max-width: 300px;
+  }
+  button {
+    background-color: #FF1493;
+    color: #fff;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #FF6347;
+  }
+  #greetingMessage {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  #whatsappLink {
+    display: none;
+    margin-top: 20px;
+    font-size: 18px;
+    padding: 12px 20px;
+    background-color: #25D366;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+  }
+  #whatsappLink:hover {
+    background-color: #128C7E;
+  }
+  .durga-image {
+    width: 80%;
+    max-width: 300px;
+    margin: 20px 0;
+    border-radius: 15px;
+    border: 3px solid #fff;
+  }
+</style>
+</head>
+<body>
+<h1>🌸 Happy Durga Puja 🌸</h1>
+<img class="durga-image" src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Goddess_Durga_Illustration.jpg" alt="Goddess Durga">
+
+<div id="inputSection">
+  <p>Enter your name:</p>
+  <input type="text" id="nameInput" placeholder="Your Name">
+  <br>
+  <button id="generateBtn">Generate Greeting</button>
+</div>
+
+<p id="greetingMessage"></p>
+<a id="whatsappLink" href="#" target="_blank">Share on WhatsApp</a>
+
+<script>
+document.getElementById('generateBtn').addEventListener('click', function() {
+    const name = document.getElementById('nameInput').value.trim();
+    if(!name) {
+        alert('Please enter your name!');
+        return;
+    }
+
+    // Hide input and button
+    document.getElementById('inputSection').style.display = 'none';
+
+    const message = `🌸 Happy Durga Puja, ${name}! May Maa Durga bless you with happiness, health, and prosperity. 🌸`;
+    document.getElementById('greetingMessage').innerText = message;
+
+    const whatsappURL = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+    const whatsappLink = document.getElementById('whatsappLink');
+    whatsappLink.href = whatsappURL;
+    whatsappLink.style.display = 'inline-block';
+});
+</script>
+</body>
+</html>
